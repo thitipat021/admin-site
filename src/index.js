@@ -4,14 +4,14 @@ import './index.css';
 import {Router,Route,Link} from 'react-router';
 import { createBrowserHistory } from 'history'
 import * as serviceWorker from './serviceWorker';
-import ManageStd from './page/manageStudent';
+import ManageUser from './page/manageusr';
 import Login from './page/login';
 let browserHistory = createBrowserHistory()
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route exact path="/" component={Login}/>
-    <Route exact path="/managestd" component={ManageStd}/>
+    <Route exact path="/manageuser" component={ManageUser}/>
   </Router>,document.getElementById('root')
 );
 

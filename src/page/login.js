@@ -16,7 +16,7 @@ function Login() {
 					        <label>Password</label>
                             <input type="text" className="form-control" placeholder="Enter Password" value=""/>
 				        </div>
-                        <Link to="/managestd">
+                        <Link to="/manageuser">
                             <button type="submit" className="btn btn-primary">Login</button>
                         </Link>
                     </article>
