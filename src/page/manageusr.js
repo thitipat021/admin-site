@@ -39,9 +39,6 @@ const useStyles = makeStyles({
 
 function ManageUser() {
         const [user, setUser] = useState({firstName: '', lastName: ''})
-        const addUser=(e)=>{
-            console.log("user added");
-        }
         const classes = useStyles();
 
         return(

@@ -1,4 +1,4 @@
-import { AppBar, Badge, Grid, IconButton, makeStyles, Toolbar } from '@material-ui/core';
+import { AppBar, Grid, IconButton, makeStyles, Toolbar } from '@material-ui/core';
 import React from 'react';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
