@@ -38,7 +38,6 @@ const useStyles = makeStyles({
 })
 
 function ManageUser() {
-        const [user, setUser] = useState({firstName: '', lastName: ''})
         const classes = useStyles();
 
         return(

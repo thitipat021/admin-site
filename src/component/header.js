@@ -9,7 +9,7 @@ const useStyles = makeStyles({
         backgroundColor: '#fff',
     },
     logo1:{
-        color: '#87CEFA'
+        color: '#4B0082'
     },
 })
 
