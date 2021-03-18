@@ -1,8 +1,10 @@
 import { AppBar, Grid, IconButton, makeStyles, Toolbar } from '@material-ui/core';
-import React from 'react';
+import React, {useContext} from 'react';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import { Link } from 'react-router-dom';
+import {UserContext} from '../context/user'
+import {useHistory} from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -15,6 +17,14 @@ const useStyles = makeStyles({
 
 export default function Header() {
     const classes = useStyles();
+
+    const user = useContext(UserContext)
+    const history = useHistory()
+
+    const doLogout = () =>{
+        user.setIsAuth(false)
+        history.push('/')
+    }
     return(
         <AppBar position="static" className={classes.root} >
             <Toolbar>
@@ -25,7 +35,7 @@ export default function Header() {
                     <Grid item sm></Grid>
                     <Grid item>
                         <Link to="/">
-                            <IconButton>
+                            <IconButton onClick={doLogout}>
                                 <PowerSettingsNewIcon fontSize="small"/>
                             </IconButton>
                         </Link>
