@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles, withStyles} from "@material-ui/core"
+import {makeStyles, MenuItem, withStyles, MenuList} from "@material-ui/core"
 
 const useStyles = makeStyles({
     sideNav: {
@@ -18,7 +18,11 @@ export default function SideNav() {
     console.log(classes)
     return(
         <div className={classes.sideNav}>
-
+            <MenuList>
+                <MenuItem>User Management</MenuItem>
+                <MenuItem>All Reservation</MenuItem>
+                <MenuItem>Room Management</MenuItem>
+            </MenuList>
         </div>
     )
 }

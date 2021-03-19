@@ -1,8 +1,7 @@
-import { Grid } from '@material-ui/core';
+import { Button, Grid, RadioGroup, Select, TextField } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { FormUse, Form } from './formuse';
-import Contrl from '../component/controls/contrl';
-import * as userService from "../services/user_service";
+
 
 const genderItems = [
     {id:'male', title:'Male'},
@@ -21,6 +20,8 @@ const initialPerson = {
 }
 
 export default function UserForm(props) {
+    const [person, setPerson] = useState(initialPerson);
+    const [errors, setErrors] = useState({});
     const {addOrEdit, recordForEdit} = props;
     const validate = (fieldValues = person) => {
         let temp = {...errors}
@@ -42,20 +43,33 @@ export default function UserForm(props) {
             return Object.values(temp).every(x => x == "")
     }
     
-    const {
-        person,
-        setPerson,
-        errors,
-        setErrors,
-        handleInputChange,
-        resetForm
-    }=FormUse(initialPerson, true, validate);
+    // const {
+    //     person,
+    //     setPerson,
+    //     errors,
+    //     setErrors,
+    //     handleInputChange,
+    //     resetForm
+    // }=FormUse(initialPerson, true, validate);
 
     const handleSubmit = e=> {
         e.preventDefault()
         if(validate()) {
             addOrEdit(person, resetForm);
         }
+    }
+    const resetForm = ()=>{
+        setPerson(initialPerson);
+        setErrors({})
+    }
+    const handleInputChange = e=>{
+        // const {name, value} = e.target
+        // setPerson({
+        //     ...person,
+        //     [name]: value
+        // })
+        // if(validateOnChange)
+        // validate({[name]: value})
     }
 
     useEffect(() =>{
@@ -69,17 +83,17 @@ export default function UserForm(props) {
         <Form onSubmit={handleSubmit}>
             <Grid container>
                 <Grid item xs={6}>
-                    <Contrl.Input name="fullName" label="Full Name" value={person.fullName} onChange={handleInputChange} error={errors.fullName}/>
-                    <Contrl.Input label="Email" name="email" value={person.email} onChange={handleInputChange} error={errors.email}/>
-                    <Contrl.Input label="Phone number" name="phoneNum" value={person.phoneNum} onChange={handleInputChange} error={errors.phoneNum}/>
+                    <TextField name="fullName" label="Full Name" value={person.fullName} onChange={handleInputChange} error={errors.fullName}/>
+                    <TextField label="Email" name="email" value={person.email} onChange={handleInputChange} error={errors.email}/>
+                    <TextField label="Phone number" name="phoneNum" value={person.phoneNum} onChange={handleInputChange} error={errors.phoneNum}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <Contrl.RadioGroup name="gender" label="Gender" value={person.gender} onChange={handleInputChange} items={genderItems}/>
-                    <Contrl.Select name="roleId" label="Role" value={person.roleId} onChange={handleInputChange} options={userService.getRoleCollection()} error={errors.roleId}/>
-                    <Contrl.Input name="password" label="Password" value={person.password} onChange={handleInputChange} error={errors.password}/>
+                    <RadioGroup name="gender" label="Gender" value={person.gender} onChange={handleInputChange} items={genderItems}/>
+                    <Select name="roleId" label="Role" value={person.roleId} onChange={handleInputChange}  error={errors.roleId}/>
+                    <TextField name="password" label="Password" value={person.password} onChange={handleInputChange} error={errors.password}/>
                     <div>
-                        <Contrl.Button type="submit" text="Submit"/>
-                        <Contrl.Button text="Reset" color="default" onClick={resetForm}/>
+                        <Button type="submit" text="Submit"/>
+                        <Button text="Reset" color="default" onClick={resetForm}/>
                     </div>
                 </Grid>
             </Grid>

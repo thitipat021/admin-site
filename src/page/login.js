@@ -48,6 +48,7 @@ function Login(props) {
             );
 
             if (response.data.success) {
+                user.setUser(response.data)
                 user.setIsAuth(true);
                 history.push("/manageuser");
             }
